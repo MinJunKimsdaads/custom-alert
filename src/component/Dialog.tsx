@@ -1,17 +1,20 @@
 import { createContext } from "react";
 type Type1 = {
-    fn: (a: void) => void;
+    fn: () => void;
 }
-// const DialContext = createContext<Type1>();
+
+export const DialContext = createContext<Type1 | null>(null);
+
 
 const Dialog = ({children}: { children: React.ReactNode }) => {
-    const DialContext = createContext<Type1>(void:con);
-    const test=()=>{
+    const fn=():void=>{
         alert('test');
     }
     return (
-        <DialContext.Provider value={{test}}>
+        <DialContext.Provider value={{fn}}>
             {children}
         </DialContext.Provider>
     )
 }
+
+export default Dialog;

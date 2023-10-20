@@ -1,8 +1,11 @@
 import Test from "./component/Test";
+import Dialog from "./component/Dialog";
 function App() {
   return (
     <div className="App">
-      <Test></Test>
+      <Dialog>
+        <Test></Test>
+      </Dialog>
     </div>
   );
 }
