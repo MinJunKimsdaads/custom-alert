@@ -1,40 +1,27 @@
-import { useState,createContext } from "react";
-{}
+import { useState, useContext, createContext } from "react";
 
-interface Defaults{
-    type:string|null; //alert or confirm or prompt
-    title:string|null;
-    des:string|null;
-    btn1:string|null;
-    btn2:string|null;
-    style:object|null;
+const DialogContext = createContext(null);
+
+export const useDialog = ({children}) => {
+    
+    const defaults = useContext(DialogContext);
+    return (
+        <DialogContext.Provider value={{'test'}}>
+            {children}
+        </DialogContext>
+    );
 }
 
-export const DialContext = createContext<Defaults | null>(null);
-
-
-const Dialog = ({children}: { children: React.ReactNode }) => {
-    const initial:Defaults={
-        type:'', //alert or confirm or prompt
-        title:'',
-        des:'',
-        btn1:'',
-        btn2:'',
-        style:{
-        }
-    }
-
-    const [defaults, setDefaults] = useState<Defaults>(initial);
-
+export function Dialog(props:any){
     return (
-        <DialContext.Provider value={defaults}>
-            {children}
-            
-            {defaults.type == 'alert' ? <div>alert</div> : null}
-            {defaults.type == 'confirm' ? <div>confirm</div> : null}
-            {defaults.type == 'prompt' ? <div>prompt</div> : null}
-        </DialContext.Provider>
+        <div>
+           <div>
+                <div>title</div>
+                <div>des</div>
+                <div>
+                    <span>btn</span>
+                </div>
+           </div>
+        </div>
     )
 }
-
-export default Dialog;
