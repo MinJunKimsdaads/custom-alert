@@ -1,18 +1,28 @@
 import { useState, useContext, createContext } from "react";
 
-const DialogContext = createContext(null);
+interface State {
+    type:string|null;
+    title:string|null;
+    des:string|null;
+}
 
-export const useDialog = ({children}) => {
-    
-    const defaults = useContext(DialogContext);
+const DialogContext = createContext<State | null>(null);
+
+export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
+    const defaults = {
+        type:'',
+        title:'',
+        des:''
+    }
+    const [dialogOption, setDialogOption] = useState<State>(defaults) 
     return (
-        <DialogContext.Provider value={{'test'}}>
+        <DialogContext.Provider value={dialogOption}>
             {children}
-        </DialogContext>
+        </DialogContext.Provider>
     );
 }
 
-export function Dialog(props:any){
+export function Dialog(){
     return (
         <div>
            <div>
@@ -25,3 +35,4 @@ export function Dialog(props:any){
         </div>
     )
 }
+
