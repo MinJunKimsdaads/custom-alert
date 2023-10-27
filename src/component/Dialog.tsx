@@ -4,6 +4,7 @@ interface State {
     type:string|null;
     title:string|null;
     des:string|null;
+    styles:object|null;
 }
 
 const DialogContext = createContext<State | null>(null);
@@ -12,7 +13,16 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
     const defaults = {
         type:'',
         title:'',
-        des:''
+        des:'',
+        styles:{
+            background:'black',
+            DialogBackground:'',
+            btn1:{
+                fontSize:'',
+                borderRadius:'',
+                background:'',
+            }
+        }
     }
     const [dialogOption, setDialogOption] = useState<State>(defaults) 
     return (
