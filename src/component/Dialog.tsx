@@ -60,8 +60,8 @@ const defaults = {
 }
 
 export const DialogContext = createContext<State>({
-    dialogOption: any,
-    createDialogOption: any,
+    dialogOption:defaults,
+    createDialogOption:()=>{},
 });
 
 export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
